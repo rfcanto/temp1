@@ -1,0 +1,116 @@
+// This if used as a reference of volunteers doing loss, gain, stable polygons
+
+// 2016 - 2019 Landsat start
+
+var ls8 = ee.Image('projects/remap-app/ls_8_cflte1_2k16to19_at_30m_ui8')
+  ;
+  
+// Create a false-color composite using the selected bands
+var falseColor = ls8.visualize({
+  bands: ['Red', 'Green', 'Blue'],
+  min: 0,
+  max: 175 // 0 to 175
+});
+
+// Add the false-color composite to the map
+Map.addLayer(falseColor, {}, '2016_19 LS TrueColor',false,1);
+
+// 2016 - 2019 Landsat end
+
+
+
+// 2016 - 2019 Landsat FC start
+
+var ls8 = ee.Image('projects/remap-app/ls_8_cflte1_2k16to19_at_30m_ui8')
+  ;
+  
+// Create a false-color composite using the selected bands
+var falseColor = ls8.visualize({
+  bands: ['NIR', 'Red', 'Green'],
+  min: 0,
+  max: 175 // 0 to 175
+});
+
+// Add the false-color composite to the map
+Map.addLayer(falseColor, {}, '2016_19 LS FalseColor',false,1);
+
+// 2016 - 2019 Landsat FC end
+
+
+
+
+
+// 1999 - 2003 LS TC Start
+
+var ls = ee.Image('projects/remap-app/ls_7_self_masked_99_03_at_30m')
+  ;
+
+// Create a false-color composite using the selected bands
+var falseColor = ls.visualize({
+  bands: ['Red', 'Green', 'Blue'],
+  min: 0,
+  max: 175 // 0 to 175
+});
+
+// Add the false-color composite to the map
+Map.addLayer(falseColor, {}, '1999_03 LS TrueCOlor',false,1);
+
+// 1999 -2003 Landsat TC end
+
+
+
+// 1999 - 2003 LS FC Start
+
+var ls = ee.Image('projects/remap-app/ls_7_self_masked_99_03_at_30m')
+  ;
+
+// Create a false-color composite using the selected bands
+var falseColor = ls.visualize({
+  bands: ['NIR', 'Red', 'Green'],
+  min: 0,
+  max: 175 // 0 to 175
+});
+
+// Add the false-color composite to the map
+Map.addLayer(falseColor, {}, '1999_03 LS FalseColor',false,1);
+
+// 1999 -2003 Landsat FC end
+
+
+//2017 AWEI
+
+var awei_2019 = ee.Image('projects/UQ_intertidal/covariate_layers/L3_ndw_20172019_v2_0')
+  .select(['ndw_stdev']);
+
+var aweiVis = {palette: '070467, 17ffed','min': [0], 'max': [0.5]};
+Map.addLayer (awei_2019, aweiVis, '2017_19 LS WaterExtractionIndex', false,1);
+
+// 1999 AWEI
+
+var awei_2001 = ee.Image('projects/remap-app/gic_covariates/L3_ndw_19992001_v2_1')
+  .select(['ndw_stdev']);
+var aweiVis = {palette: '070467, 17ffed','min': [0], 'max': [0.5]};
+Map.addLayer (awei_2001, aweiVis, '1999_01 LS WaterExtractionIndex', false,1);
+
+
+
+// Export drawn polygons to Google Drive folder 'Temp'. geometry import name: Polygon, import as FeatureCollection
+
+var exportAll = Polygon;
+
+
+Export.table.toDrive({
+  collection: exportAll,
+  description: 'exportTrainingSet-DRIVE',
+  folder:'Temp',
+  fileNamePrefix:'PolygonExport_'.concat(),
+  fileFormat:'SHP'
+});
+
+
+
+
+
+
+
+
