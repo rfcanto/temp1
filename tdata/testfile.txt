@@ -108,7 +108,7 @@ Export.table.toDrive({
 });
 
 
-
+Data on C stocks and sequestration rates in Australian tidal marshes, mangrove forests and seagrass meadows were compiled from published data. In addition, unpublished studies from the CSIRO Marine and Coastal Carbon Biogeochemistry Cluster project and other studies by the co-authors were included. Data from 1,553 study sites (593 from tidal marshes, 323 from mangrove forests and 637 from seagrass meadows) on soil C stocks (1,103 cores in total), soil C sequestration rates (352 cores in total) and standing C stocks in aboveground biomass (98 measurements in total) were used in this study. Detailed methods are provided in the manuscript linked to this dataset.
 
 
 
